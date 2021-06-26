@@ -42,7 +42,7 @@ lab:
 
 1. On the lab VM, in the **Administrator: Windows PowerShell ISE** window, open and run the **F:\\WSLab-master\\Scripts\\3_Deploy.ps1** script to provision VMs for the Storage Spaces Direct environment.
 
-   > **Note:** Select **None** at the telemetry prompt. The script should complete in about 15 minutes. When prompted to **Press enter to continue**, select the **Enter** key.
+   > **Note:** Note: For the Telemetry Level prompt, select the default setting of **None**. The script should complete in about ten minutes. For the prompt to start the VMs, select **No**. When prompted with Press enter to continue, select Enter.
 
 1. After the script completes, in the **Administrator: Windows PowerShell ISE** window, from the **console** pane, run the following command to start the newly provisioned VMs that will host the Storage Spaces Direct environment:
 
@@ -173,7 +173,7 @@ lab:
    (Get-Cluster -Domain $env:userdomain | Where-Object S2DEnabled -eq 1).Name | Out-File c:\s2dclusters.txt
    ```
 
-1. Switch to the Microsoft Edge browser window, select **Get started**, accept the default tab page settings, select the **Continue without Signing-in** link, use the Microsoft Edge browser to navigate to `https://management.corp.contoso.com`, and then when prompted to authenticate, sign in as **CORP\\LabAdmin** with the password **LS1setup!**. 
+1. Switch to the Microsoft Edge browser window, select **Complete setup**, select **Confirm**, select the **Continue without Signing-in** link, use the Microsoft Edge browser to navigate to `https://management.corp.contoso.com`, and then when prompted to authenticate, sign in as **CORP\\LabAdmin** with the password **LS1setup!**. 
 1. In the console session to the **WSLab-Management** VM, in the browser window displaying the Windows Admin Center interface, on the **All connections** page, select **+ Add**.
 1. On the **Add or create resources** panel, on the **Server clusters** tile, select **Add**, select the **Import clusters** tab, select **Select a file**, in the **Open** dialog box, locate the **c:\s2dclusters.txt** file, select **Open**, and then select **Add**.
 
