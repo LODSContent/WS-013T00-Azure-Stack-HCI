@@ -143,7 +143,7 @@ lab:
     Get-Disk | Where Number -Ne $Null | Where IsBoot -Ne $True | Where IsSystem -Ne $True | Where PartitionStyle -Eq RAW | Group -NoElement -Property FriendlyName
    } | Sort -Property PsComputerName, Count
    ```
-1. Within the console session to the **WSLabOnboard-DC** VM, in the PowerShell ISE window, from the console pane, run the following cmdlet to install the Failover Clustering  and restart the **WSLabOnboard-DC** VM.
+1. Within the console session to the **WSLabOnboard-DC** VM, in the PowerShell ISE window, from the console pane, run the following cmdlet to install the Failover Clustering and restart the **WSLabOnboard-DC** VM.
 
    ```powershell
    Install-WindowsFeature -Name failover-clustering -IncludeManagementTools
