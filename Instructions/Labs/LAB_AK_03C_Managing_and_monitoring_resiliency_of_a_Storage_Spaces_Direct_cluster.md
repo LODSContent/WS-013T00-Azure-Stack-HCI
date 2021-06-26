@@ -50,7 +50,7 @@ lab:
 
 1. On the lab VM, in the **Administrator: Windows PowerShell ISE** window, open and run the **F:\\WSLab-master\\Scripts\\3_Deploy.ps1** script to provision VMs for the Storage Spaces Direct environment.
 
-   > **Note:** Select **None** at the Telemetry prompt. The script should complete in about 10 minutes. When prompted **Press enter to continue**, select the **Enter** key.
+   > **Note:** Note: For the Telemetry Level prompt, select the default setting of **None**. The script should complete in about ten minutes. For the prompt to start the VMs, select **No**. When prompted with Press enter to continue, select Enter.
 
 1. When the script completes, in the **Administrator: Windows PowerShell ISE** window, open a new tab, and run the following command to start the newly provisioned VMs that will host the Storage Spaces Direct environment:
 
@@ -119,11 +119,11 @@ lab:
    }
    ```
 
-   > **Note:** Before you proceed to the next step, verify that the installation of Microsoft Edge and Windows Admin Center completed.
-
 1. Close the other two instances of the **Administrator: Windows PowerShell ISE** window you opened earlier in this task without saving the scripts you ran from each.
 
-1. Switch to the Microsoft Edge browser window, select **Get started**, accept the default tab page settings, and select the **Continue without Signing-in** link, use the Microsoft Edge browser to navigate to `https://management.corp.contoso.com`, and then when prompted to authenticate, sign in as **CORP\\LabAdmin** with the password **LS1setup!**.
+1. In the console session to the WSLab-Management VM, download and install Microsoft Edge for Business.
+
+1. Open or switch to the Microsoft Edge for Business browser window, select **Complete setup**, select **Confirm**, and select the **Continue without Signing-in** link, use the Microsoft Edge for Business browser to navigate to `https://management.corp.contoso.com`, and then when prompted to authenticate, sign in as **CORP\\LabAdmin** with the password **LS1setup!**.
 
 ### Task 3: Create and configure a failover cluster
 
