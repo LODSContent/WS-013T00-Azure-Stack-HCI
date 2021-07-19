@@ -182,7 +182,7 @@ lab:
    |Setting|Value|
    |---|---|
    |Subscription|the name of the Azure subscription you are using in this lab|
-   |Resource group|Create a new resopurce group called 'WS013-02-RG'|
+   |Resource group|Create a new resource group called 'WS013-02-RG'|
    |Storage account name|any globally unique name between 3 and 24 in length consisting of letters and digits|
    |Location|the name of an Azure region in proximity to the location of the lab environment|
    |Performance|Standard|
