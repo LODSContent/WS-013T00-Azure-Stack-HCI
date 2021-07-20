@@ -83,11 +83,11 @@ lab:
 
 1. On the page displaying the properties of the Hyper-V host, in the **Tools** list, select **Services**.
 
-1. On the **Services** panel, locate and select the **NcHostAgent** entry, and then select **Restart** in the toolbar.
+1. On the **Services** panel, locate and select the **NcHostAgent** entry, and then select **Restart** in the toolbar. In the **Restart Service** prompt, select **Yes** 
 
 1. Within the console session to the **SDNExpress2019-Management** VM, switch to the **Hyper-V Manager** console displaying the Hyper-V host (**HV3**) to which you deployed all three virtual machines.
 
-1. In the **Hyper-V Manager** window, select **vm-100** and, in the **Actions** pane, in the **vm-100** section, select **Shut down**.
+1. In the **Hyper-V Manager** window, select **vm-100** and, in the **Actions** pane, in the **vm-100** section, select **Shut down** In the **Shut Down Machine** prompt select **Shut Down**.
 
 1. Wait until **vm-100** is listed in the **Off** state and, in the **Actions** pane, in the **vm-100** section, select **Start**.
 

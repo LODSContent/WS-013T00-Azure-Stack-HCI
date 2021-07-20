@@ -127,7 +127,7 @@ lab:
 
 1. On the **C: > ClusterStorage > Volume02-map70** pane, select **New Folder**, and on the **Create New Folder** pane, in the **New folder name** text box, enter **vhdFiles**, and then select **Submit**.
 
-1. On the **Files** pane, select the newly created folder, and on the **C: > ClusterStorage > Volume02-map70 > vhdFiles** pane, select **More**, and then select **Upload**.
+1. On the **Files** pane, select the newly created folder, and on the **C: > ClusterStorage > Volume02-map70 > vhdFiles** pane, select **Upload**.
 
 1. On the **Upload** pane, select **Select files**, and in the **Open** dialog box, navigate to the **Downloads** folder, select **tools.vhdx**, and then select **Open**.
 

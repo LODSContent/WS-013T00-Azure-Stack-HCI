@@ -71,9 +71,9 @@ lab:
 
    >**Note**: Ignore error messages regarding aborted I/O operation.
 
-1. Install the Microsoft Edge based on Chromium browser.
+1. Within the console session to the **WSLabOnboard-DC** VM, download and install Microsoft Edge for Business.
 
-1. Within the console session to the **WSLabOnboard-DC** VM, complete the Microsoft Edge installation by selecting **Get started**, following subsequent prompts, and then closing the browser window.
+1. Within the console session to the **WSLabOnboard-DC** VM, complete the Microsoft Edge for Business installation by selecting **Complete setup**, select **Confirm**, select **Continue without signing in**, and then close the browser window.
 
 ### Task 2: Provision a Storage Spaces Direct cluster within the lab environment
 
@@ -143,6 +143,15 @@ lab:
     Get-Disk | Where Number -Ne $Null | Where IsBoot -Ne $True | Where IsSystem -Ne $True | Where PartitionStyle -Eq RAW | Group -NoElement -Property FriendlyName
    } | Sort -Property PsComputerName, Count
    ```
+1. Within the console session to the **WSLabOnboard-DC** VM, in the PowerShell ISE window, from the console pane, run the following cmdlet to install the Failover Clustering and restart the **WSLabOnboard-DC** VM.
+
+   ```powershell
+   Install-WindowsFeature -Name failover-clustering -IncludeManagementTools
+   ```
+
+   ```powershell
+   Restart-Computer -Force
+   ```
 
 1. Within the console session to the **WSLabOnboard-DC** VM, in the PowerShell ISE window, from the console pane, run the following cmdlet to perform cluster validation for the four VMs in the lab environment (**S2D1**, **S2D2**, **S2D3**, and **S2D4**):
 
@@ -150,7 +159,8 @@ lab:
    Test-Cluster -Node 'S2D1','S2D2','S2D3','S2D4' -Include 'Storage Spaces Direct', 'Inventory', 'Network', 'System Configuration'
    ```
 
-   >**Note**: In order to run Test-Cluster from the **WSLabOnboard-DC** VM, you will need to install the Failover Clustering feature and restart the **WSLabOnboard-DC** VM.  Ignore cluster validation errors. That's expected.
+   >**Note**: Ignore cluster validation warnings. That's expected.
+
 
 1. Within the console session to the **WSLabOnboard-DC** VM, in the PowerShell ISE window, from the console pane, run the following cmdlet to create a new cluster consisting of the four VMs in the lab environment (**S2D1**, **S2D2**, **S2D3**, and **S2D4**):
 
@@ -164,7 +174,7 @@ lab:
 
 1. Within the console session to the **WSLabOnboard-DC** VM, start the Microsoft Edge based on Chromium browser, navigate to the [Azure portal](https://portal.azure.com) and, when you receive a prompt, sign in with the Owner or Contributor role in the Azure subscription you will be using in this lab.
 1. In the Azure portal, in the **Search resources, services, and docs** text box at the top of the Azure portal page, enter **Storage accounts**, and then select the **Enter** key.
-1. On the **Storage accounts** blade, select **+ Add**.
+1. On the **Storage accounts** blade, select **+ Create**.
 1. On the **Basics** tab of the **Create storage account** blade, specify the following settings (leave others with their default values):
 
    *Table 1: Storage account settings*
@@ -172,7 +182,7 @@ lab:
    |Setting|Value|
    |---|---|
    |Subscription|the name of the Azure subscription you are using in this lab|
-   |Resource group|WS013-02-RG|
+   |Resource group|Create a new resource group called 'WS013-02-RG'|
    |Storage account name|any globally unique name between 3 and 24 in length consisting of letters and digits|
    |Location|the name of an Azure region in proximity to the location of the lab environment|
    |Performance|Standard|
@@ -212,7 +222,7 @@ lab:
    Enable-ClusterStorageSpacesDirect -CimSession 'S2DCL1'
    ```
 
-   >**Note**: Disregard an error message regarding **No disks found to be used for cache**.
+   >**Note**: Disregard the warnings regarding **No disks found to be used for cache**.
 
 1. Switch back to the browser window displaying the **Windows Admin Center** interface; on the **Settings** panel of `S2DCL1.corp.contoso.com` page, select **Storage Spaces and Pools**; and then examine its settings.
 
@@ -268,15 +278,15 @@ lab:
 ### Task 6: Configure Azure Log Analytics workspace
 
 1. Within the console session to the **WSLabOnboard-DC** VM, switch back to the browser window displaying the Azure portal interface.
-1. In the Azure portal, in the **Search resources, services, and docs** text box at the top of the Azure portal page, enter **Log Analytics workspaces**, and then select the **Enter** key.
+1. In the Azure portal, in the **Search resources, services, and docs** text box at the top of the Azure portal page, enter 'Log Analytics workspaces', and then select the **Enter** key.
 1. On the **Log Analytics workspaces** blade, select the workspace you created in the previous task.
 
    >**Note**: The workspace name has the **WSLabWorkspace** prefix.
 
 1. On the Log Analytics workspace blade, in the **Settings** section, select **Agents Configuration**.
-1. In the **Windows event logs** tab, enter **System**, and then select **+ Add windows event log**.
+1. In the **Windows event logs** tab, enter 'System', and then select **+ Add windows event log**.
 1. Use the procedure described in the previous step to add the **Application** log.
-1. On the **Agents Configuration** blade, select **Windows performance counters** tab, select **+ Add performance counter**, enter **Processor(*)\\\% Processor Time** and select **Apply**.
+1. On the **Agents Configuration** blade, select **Windows performance counters** tab, select **+ Add performance counter**, enter 'Processor(*)\\\% Processor Time' and select **Apply**.
 
 ### Task 7: Integrate hyperconverged infrastructure with Azure Automation
 
@@ -421,19 +431,18 @@ In the list of sample queries, select **Top 10 Virtual Machines by CPU utilizati
    >**Note**: The query excludes servers which are members of the Storage Spaces Direct cluster because these are updated by using Cluster Aware Updating.
 
 1. Select **Run** to verify that the query returns the list of noncompliant servers in the `Corp.contoso.com` domain that are not part of the Storage Spaces Direct cluster.
-1. Select **Save**; in the drop down list, select **Save**; in the **Save** pane, specify the following settings; and then select **Save**:
+1. Select **Save**; in the drop down list, select **Save as function**; in the **Save as function** pane, specify the following settings; and then select **Save**:
 
    *Table 2: Group query settings*
 
    |Setting|Value|
    |---|---|
-   |Name|`corp.contoso.com non-compliant non S2D servers`|
-   |Save as|Function|
-   |Function Alias|corp_non_s2d_non_compliant|
-   |Save this query as a computer group|enabled|
-   |Category|Updates|
+   |Function Name|corp_non_s2d_non_compliant|
+   |Legacy category|`corp.contoso.com non-compliant non S2D servers`|
+   |Save as a computer group|enabled|
 
-1. In the Azure portal, navigate back to the **WSLabAutomationAccount** Automation Account blade, and in the **Update Management** section, select **Update Management**.
+
+1. In the Azure portal, navigate back to the **WSLabAutomationAccount Automation Account** blade, and in the **Update Management** section, select **Update Management**.
 1. On the **Update Management** blade, select **Schedule update deployment**.
 1. On the **New update deployment** blade, in the **Name** text box, enter **ws01302 update deployment** and ensure that the **Operating system** switch is set to **Windows**.
 1. On the **New update deployment** blade, in the **Items to update** section, select **Groups to update**.

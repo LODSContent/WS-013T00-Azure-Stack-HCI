@@ -79,7 +79,7 @@ lab:
 
 1. In the Administrator: Windows PowerShell ISE window open and run the **F:\\WSLab-master\\Scripts\\3_Deploy.ps1** script to provision VMs for the SDN environment.
 
-   > **Note**: The script should complete in about 7 minutes. When prompted **Press enter to continue**, select the **Enter** key.
+   > **Note**:For the Telemetry Level prompt, select the default setting of **None**. The script should complete in about ten minutes. For the prompt to start the VMs, select **No**. When prompted with Press enter to continue, select Enter.
 
 1. In the Administrator: Windows PowerShell ISE window, open the **F:\\WSLab-master\\Scripts\\Scenario.ps1** script, remove all content following the line **128**, starting from `# ENDING Run from Hyper-V Host ENDING #`, and then save the modified file as **Scenario_Part1.ps1**.
 
