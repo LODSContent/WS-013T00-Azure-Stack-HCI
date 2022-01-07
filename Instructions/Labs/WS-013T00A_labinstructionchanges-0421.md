@@ -16,7 +16,7 @@ April 2021
 
 	- Ex 2, Task 6, Steps 3: Log Analytics Agent is now configured under “Agents Configuration” and adding Performance Counters is different.
 
-	- 
+
 
 - Lab answer key: Module 2 Lab 02: Using Windows Admin Center in hybrid scenarios.
 
@@ -26,7 +26,6 @@ April 2021
 
 	- Ex 4, Task 1, Step 2-4: Some of the wording has changed for Cluster-Aware Updating.
 
-- 
 
  
 
@@ -39,8 +38,6 @@ April 2021
 - Lab answer key: Module 3: Lab A: Implementing a Storage Spaces Direct cluster by using Windows PowerShell
 
 	- No changes required.
-
-- 
 
  
 
@@ -71,7 +68,6 @@ April 2021
 
 	- No changes required.
 
-- 
 
 April 2021
 
@@ -109,7 +105,6 @@ April 2021
 
 	- Ex 1, Task 2: I verified that only the **DC** VM will require you to run `slmgr -rearm` and be restarted. I did not remove the part of the note that says to do slmgr -rearm on all the VMs. This note can simply say “Sign in to the **DC** VM using the CORP\LabAdmin username and LS1setup! Password, run `slmgr -rearm` and restart it.”
 
-- 
 
 April 2021
 
@@ -158,11 +153,6 @@ April 2021
 - Lab answer key: Module 04: Lab D: Implementing SDN Software Load Balancing with private virtual IP by using PowerShell
 
 	- Ex 1, Task 6, Step 5: The Lab VM was on a public network profile so it wasn’t allowing inbound port 80 so I just added a note to verify that inbound port 80 is allowed on Windows Firewall for the lab VM on all network profiles.
-
- 
-
-- 
-
  
 
  
